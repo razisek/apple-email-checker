@@ -2,11 +2,11 @@
 
 originally made with php but changed to a more powerful python language
 
-### requirement
+## Requirement
 
  - Python 3
 
-### how to run
+## How to run
 
 install dependencies :
 
@@ -15,5 +15,5 @@ install dependencies :
 run :
 
     python run.py
-    
-### Screenshot
+
+## Screenshot
