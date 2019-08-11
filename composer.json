@@ -1,7 +1,0 @@
-{
-    "require": {
-        "php-curl-class/php-curl-class": "^8.6",
-        "asyncphp/doorman": "^3.0",
-        "league/climate": "^3.5"
-    }
-}
