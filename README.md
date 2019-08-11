@@ -17,3 +17,8 @@ run :
     python run.py
 
 ## Screenshot
+
+![](screenshot/2.0.png)
+
+## Video
+
