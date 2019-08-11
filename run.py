@@ -6,7 +6,10 @@ import sys
 import queue
 import sys
 import datetime
-
+from colorama import Fore, Back, init
+import os
+init(autoreset=True)
+os.system('clear')
 class Apple():
 
 	ua 			= 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36'
@@ -64,15 +67,19 @@ class Apple():
 
 			eml = self.input_queue.get()
 			rez = self.post_email(eml)
-
+			# Added counter by Hilmi Azizi
+			lif = os.popen('wc -l rezult/live.txt').read()
+			ded = os.popen('wc -l rezult/die.txt').read()
+			lif = lif.replace(" rezult/live.txt","").rstrip()
+			ded = ded.replace(" rezult/die.txt","").rstrip()
 			if rez == 'live': 
-				print(' ->',self.version,'-',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- LIVE - '+eml)
+				print(Fore.GREEN+' -> '+Fore.MAGENTA+self.version+Fore.CYAN+' | '+Fore.GREEN+'L:'+Fore.WHITE+str(lif)+Fore.CYAN+' - '+Fore.RED+'D:'+Fore.WHITE+str(ded)+Fore.CYAN+'| '+Fore.GREEN+'LIVE '+Fore.CYAN+'| '+eml)
 				self.save_to_file('rezult/live.txt',eml+'\n') 
 			elif rez == 'die':
-				print(' ->',self.version,'-',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- DEAD - '+eml) 
+				print(Fore.GREEN+' -> '+Fore.MAGENTA+self.version+Fore.CYAN+' | '+Fore.GREEN+'L:'+Fore.WHITE+str(lif)+Fore.CYAN+' - '+Fore.RED+'D:'+Fore.WHITE+str(ded)+Fore.CYAN+'| '+Fore.RED+'DEAD '+Fore.CYAN+'| '+eml)
 				self.save_to_file('rezult/die.txt',eml+'\n') 
 			elif rez == 'unknown': 
-				print(' ->',self.version,'-',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- UNKN - '+eml)
+				print(Fore.GREEN+' -> '+Fore.MAGENTA+self.version+Fore.CYAN+' | '+Fore.GREEN+'L:'+Fore.WHITE+str(lif)+Fore.CYAN+' - '+Fore.RED+'D:'+Fore.WHITE+str(ded)+Fore.CYAN+'| '+Fore.BLUE+'UNKW '+Fore.CYAN+'| '+eml)
 				self.save_to_file('rezult/unknown.txt',eml+'\n') 
 
 			self.input_queue.task_done()
