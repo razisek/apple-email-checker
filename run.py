@@ -5,7 +5,7 @@ import threading
 import sys
 import queue
 import sys
-from datetime import datetime
+import datetime
 
 class Apple():
 
@@ -66,13 +66,13 @@ class Apple():
 			rez = self.post_email(eml)
 
 			if rez == 'live': 
-				print(' ->',self.version,'-',datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- LIVE - '+eml)
+				print(' ->',self.version,'-',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- LIVE - '+eml)
 				self.save_to_file('rezult/live.txt',eml+'\n') 
 			elif rez == 'die':
-				print(' ->',self.version,'-',datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- DEAD - '+eml) 
+				print(' ->',self.version,'-',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- DEAD - '+eml) 
 				self.save_to_file('rezult/die.txt',eml+'\n') 
 			elif rez == 'unknown': 
-				print(' ->',self.version,'-',datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- UNKN - '+eml)
+				print(' ->',self.version,'-',datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'- UNKN - '+eml)
 				self.save_to_file('rezult/unknown.txt',eml+'\n') 
 
 			self.input_queue.task_done()
